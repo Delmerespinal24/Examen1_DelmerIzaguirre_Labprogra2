@@ -25,10 +25,6 @@ public class Github extends javax.swing.JFrame {
     public Persona getuser() {
         return Owner;
     }
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,10 +40,11 @@ public class Github extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Borrar = new javax.swing.JButton();
         Proyecto = new javax.swing.JButton();
         LogOut = new javax.swing.JToggleButton();
         Actualizar = new javax.swing.JButton();
+        commit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,7 +76,12 @@ public class Github extends javax.swing.JFrame {
 
         jButton1.setText("Abrir");
 
-        jButton2.setText("Borrar");
+        Borrar.setText("Borrar");
+        Borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BorrarActionPerformed(evt);
+            }
+        });
 
         Proyecto.setText("Nuevo Proyecto");
         Proyecto.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +104,13 @@ public class Github extends javax.swing.JFrame {
             }
         });
 
+        commit.setText("Commit");
+        commit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,11 +121,13 @@ public class Github extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(Borrar)
                         .addGap(29, 29, 29)
                         .addComponent(Proyecto)
                         .addGap(26, 26, 26)
                         .addComponent(Actualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(commit)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 59, Short.MAX_VALUE)
@@ -135,9 +146,10 @@ public class Github extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(Borrar)
                     .addComponent(Proyecto)
-                    .addComponent(Actualizar))
+                    .addComponent(Actualizar)
+                    .addComponent(commit))
                 .addContainerGap(191, Short.MAX_VALUE))
         );
 
@@ -154,15 +166,15 @@ public class Github extends javax.swing.JFrame {
         for (int i = 0; i < proyecto.size(); i++) {
             matriz[i][0] = proyecto.get(i).getNombre();
             matriz[i][1] = proyecto.get(i).getColaboladores();
-            matriz[i][2] = proyecto.get(i).getCommits();
+            matriz[i][2] = "" + proyecto.get(i).getCommits();
 
         }
-        
+
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
-            matriz,
-            new String [] {
-                "Nombre", "Colaboradores", "Commits"
-            }
+                matriz,
+                new String[]{
+                    "Nombre", "Colaboradores", "Commits"
+                }
         ));
 
     }
@@ -198,7 +210,6 @@ public class Github extends javax.swing.JFrame {
             try {
                 int pos = Integer.parseInt(JOptionPane.showInputDialog("Elija los colaboladores\n" + usuarios));
                 colaborador.add(user.getLista().get(pos));
-                
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Posicion no valida");
@@ -231,14 +242,42 @@ public class Github extends javax.swing.JFrame {
         actualizar();
     }//GEN-LAST:event_ActualizarActionPerformed
 
+    private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
+        // TODO add your handling code here:
+        int Fila = Tabla.getSelectedRow();
+        if (Fila >= 0) {
+           proyecto.remove(Fila);
+        } else {
+            JOptionPane.showMessageDialog(this, "Fila no seleccionada");
+        }
+
+    }//GEN-LAST:event_BorrarActionPerformed
+
+    private void commitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitActionPerformed
+        // TODO add your handling code here:
+        
+        int Fila = Tabla.getSelectedRow();
+        if (Fila >= 0) {
+           JOptionPane.showInputDialog("Commit:");
+           proyecto.get(Fila).setCommits(proyecto.get(Fila).getCommits()+1);
+        } else {
+           JOptionPane.showMessageDialog(this, "Fila no seleccionada");
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_commitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
+    private javax.swing.JButton Borrar;
     private javax.swing.JToggleButton LogOut;
     private javax.swing.JButton Proyecto;
     private javax.swing.JTable Tabla;
+    private javax.swing.JButton commit;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;

@@ -12,12 +12,14 @@ import java.util.ArrayList;
  * @author Owner
  */
 public class Proyecto {
-    private String nombre,commits;
+    private String nombre;
+    int commits;
     private ArrayList<Persona> personas = new ArrayList<Persona>();
     private ArrayList<archivo> carpetas = new ArrayList<archivo>();
 
     public Proyecto(String nombre) {
         this.nombre = nombre;
+        commits = 0;
     }
 
     public String getNombre() {
@@ -28,7 +30,7 @@ public class Proyecto {
         this.nombre = nombre;
     }
 
-    public String getCommits() {
+    public int getCommits() {
         return commits;
     }
     
@@ -42,7 +44,7 @@ public class Proyecto {
         
     }
 
-    public void setCommits(String commits) {
+    public void setCommits(int commits) {
         this.commits = commits;
     }
 
