@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class Github extends javax.swing.JFrame {
 
+    private static int carpetas = 0;
     private ArrayList<Proyecto> proyecto = new ArrayList<Proyecto>();
     private Persona Owner;
 
@@ -113,6 +114,11 @@ public class Github extends javax.swing.JFrame {
         });
 
         carpeta.setText("Nueva carpeta");
+        carpeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carpetaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -279,6 +285,16 @@ public class Github extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_commitActionPerformed
+
+    private void carpetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carpetaActionPerformed
+        // TODO add your handling code here:
+        int Fila = Tabla.getSelectedRow();
+        if (Fila >= 0) {
+           carpetas++;
+        } else {
+           JOptionPane.showMessageDialog(this, "Fila no seleccionada");
+        }
+    }//GEN-LAST:event_carpetaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
