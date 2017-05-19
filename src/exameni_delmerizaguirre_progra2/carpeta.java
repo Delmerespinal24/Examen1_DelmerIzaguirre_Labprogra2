@@ -12,9 +12,15 @@ import java.util.ArrayList;
  * @author Owner
  */
 public class carpeta {
-
+    
+    private int numcarpeta;
     ArrayList<archivo> carpet = new ArrayList<archivo>();
 
+    public carpeta(int numcarpeta) {
+        this.numcarpeta = numcarpeta;
+    }
+
+    
     public Object[] carpeta() {
         ArrayList<String> carpeta = new ArrayList<>();
         int cont = 1;
@@ -31,5 +37,12 @@ public class carpeta {
         return def;
 
     }
+
+    @Override
+    public String toString() {
+        return "carpeta{" +numcarpeta+ '}';
+    }
+    
+    
 
 }

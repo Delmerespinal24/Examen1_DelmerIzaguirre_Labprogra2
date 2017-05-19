@@ -45,6 +45,7 @@ public class Github extends javax.swing.JFrame {
         LogOut = new javax.swing.JToggleButton();
         Actualizar = new javax.swing.JButton();
         commit = new javax.swing.JButton();
+        carpeta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,29 +112,36 @@ public class Github extends javax.swing.JFrame {
             }
         });
 
+        carpeta.setText("Nueva carpeta");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(Borrar)
-                        .addGap(29, 29, 29)
-                        .addComponent(Proyecto)
-                        .addGap(26, 26, 26)
-                        .addComponent(Actualizar)
-                        .addGap(18, 18, 18)
-                        .addComponent(commit)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 59, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(LogOut))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LogOut, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(Borrar)
+                                .addGap(18, 18, 18)
+                                .addComponent(Proyecto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Actualizar)
+                                .addGap(18, 18, 18)
+                                .addComponent(commit)
+                                .addGap(18, 18, 18)
+                                .addComponent(carpeta)))
+                        .addGap(0, 35, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -143,14 +151,15 @@ public class Github extends javax.swing.JFrame {
                 .addComponent(LogOut)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(Borrar)
                     .addComponent(Proyecto)
                     .addComponent(Actualizar)
-                    .addComponent(commit))
-                .addContainerGap(191, Short.MAX_VALUE))
+                    .addComponent(commit)
+                    .addComponent(carpeta))
+                .addGap(102, 102, 102))
         );
 
         jTabbedPane1.addTab("Proyectos", jPanel1);
@@ -178,6 +187,8 @@ public class Github extends javax.swing.JFrame {
         ));
 
     }
+    
+    
 
 
     private void ProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProyectoActionPerformed
@@ -276,6 +287,7 @@ public class Github extends javax.swing.JFrame {
     private javax.swing.JToggleButton LogOut;
     private javax.swing.JButton Proyecto;
     private javax.swing.JTable Tabla;
+    private javax.swing.JButton carpeta;
     private javax.swing.JButton commit;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
