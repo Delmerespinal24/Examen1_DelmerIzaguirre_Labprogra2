@@ -47,6 +47,7 @@ public class Github extends javax.swing.JFrame {
         Actualizar = new javax.swing.JButton();
         commit = new javax.swing.JButton();
         carpeta = new javax.swing.JButton();
+        comand = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -120,6 +121,13 @@ public class Github extends javax.swing.JFrame {
             }
         });
 
+        comand.setText("Ingresar comando");
+        comand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comandActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,17 +144,20 @@ public class Github extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(Borrar)
-                                .addGap(18, 18, 18)
-                                .addComponent(Proyecto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Actualizar)
-                                .addGap(18, 18, 18)
-                                .addComponent(commit)
-                                .addGap(18, 18, 18)
-                                .addComponent(carpeta)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comand)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Borrar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Proyecto)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Actualizar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(commit)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(carpeta)))))
                         .addGap(0, 35, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -165,7 +176,9 @@ public class Github extends javax.swing.JFrame {
                     .addComponent(Actualizar)
                     .addComponent(commit)
                     .addComponent(carpeta))
-                .addGap(102, 102, 102))
+                .addGap(18, 18, 18)
+                .addComponent(comand)
+                .addGap(61, 61, 61))
         );
 
         jTabbedPane1.addTab("Proyectos", jPanel1);
@@ -296,6 +309,26 @@ public class Github extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_carpetaActionPerformed
 
+    private void comandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comandActionPerformed
+        // TODO add your handling code here:
+        Usuarios user = new Usuarios();
+            
+        int Fila = Tabla.getSelectedRow();
+        if (Fila >= 0) {
+            for (Persona per1 : proyecto.get(Fila).getPersonas()) {
+                for (Persona per2 : user.getLista()) {
+                    if(per1.getNombre().equals(per2.getNombre())){
+                        //Intentando hacer el push;
+                    }
+                }
+            }
+        } else {
+           JOptionPane.showMessageDialog(this, "Fila no seleccionada");
+        }  
+        
+        
+    }//GEN-LAST:event_comandActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
@@ -304,6 +337,7 @@ public class Github extends javax.swing.JFrame {
     private javax.swing.JButton Proyecto;
     private javax.swing.JTable Tabla;
     private javax.swing.JButton carpeta;
+    private javax.swing.JButton comand;
     private javax.swing.JButton commit;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
